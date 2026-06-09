@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://input-types.pages.dev/sitemap.xml

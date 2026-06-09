@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Input Types — Complete Reference with Examples</title>
+<meta name="description" content="Complete reference for all HTML input types with live examples, attributes, browser support, mobile keyboard info, and validation rules.">
+<meta property="og:title" content="HTML Input Types — Complete Reference with Examples">
+<meta property="og:description" content="Interactive reference for every HTML input type. Live examples, attributes, browser support, mobile keyboards, and validation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://input-types.pages.dev">
+<meta property="og:image" content="https://input-types.pages.dev/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌨</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "HTML Input Types Reference",
+  "url": "https://input-types.pages.dev",
+  "description": "Complete interactive reference for all HTML input types with live examples, browser support, and mobile keyboard information.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--accent2:#3fb950;--accent3:#d2a8ff;--radius:8px;--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--mono:'SF Mono',SFMono-Regular,Consolas,monospace}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid var(--border);padding:32px 0;text-align:center}
+header h1{font-size:2rem;margin-bottom:8px;background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+header p{color:var(--muted);font-size:1.05rem}
+.stats{display:flex;gap:24px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.stats span{color:var(--muted);font-size:.9rem}
+.stats strong{color:var(--accent2)}
+nav{position:sticky;top:0;z-index:100;background:rgba(13,17,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 0}
+.search-wrap{max-width:480px;margin:0 auto 12px}
+.search-wrap input{width:100%;padding:10px 16px 10px 40px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-size:.95rem;outline:none;transition:border-color .2s}
+.search-wrap input:focus{border-color:var(--accent)}
+.search-wrap{position:relative}
+.search-wrap::before{content:'⌕';position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:1.1rem}
+.tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.tabs button{padding:6px 16px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-size:.85rem;transition:all .2s}
+.tabs button:hover{border-color:var(--accent);color:var(--text)}
+.tabs button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+main{padding:32px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card.hidden{display:none}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.card-head h3{font-size:1.15rem;font-family:var(--mono)}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:.75rem;font-weight:600}
+.badge-text{background:#1f6feb22;color:var(--accent);border:1px solid #1f6feb44}
+.badge-numeric{background:#3fb95022;color:var(--accent2);border:1px solid #3fb95044}
+.badge-datetime{background:#d2992222;color:#d29922;border:1px solid #d2992244}
+.badge-selection{background:#d2a8ff22;color:var(--accent3);border:1px solid #d2a8ff44}
+.badge-action{background:#f8514922;color:#f85149;border:1px solid #f8514944}
+.badge-other{background:#8b949e22;color:var(--muted);border:1px solid #8b949e44}
+.card p.desc{color:var(--muted);font-size:.9rem;margin-bottom:16px}
+.example-wrap{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:14px}
+.example-wrap label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:8px}
+.example-wrap input,.example-wrap button{width:100%}
+.example-wrap input[type="checkbox"],.example-wrap input[type="radio"]{width:auto}
+.example-wrap input[type="color"]{height:44px;cursor:pointer}
+.example-wrap input[type="range"]{cursor:pointer}
+.example-wrap input[type="file"]{font-size:.85rem}
+.example-wrap input[type="hidden"]{display:none}
+.example-wrap .hidden-val{color:var(--accent);font-family:var(--mono);font-size:.85rem;margin-top:4px}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:.82rem;margin-bottom:12px}
+.info-item{background:var(--bg);padding:8px 10px;border-radius:6px}
+.info-item .label{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.info-item .val{color:var(--text);font-family:var(--mono);font-size:.8rem}
+.code-wrap{position:relative;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;margin-bottom:8px}
+.code-wrap code{font-family:var(--mono);font-size:.78rem;color:#79c0ff;white-space:pre-wrap;word-break:break-all}
+.copy-btn{position:absolute;top:8px;right:8px;padding:4px 10px;background:var(--border);border:none;border-radius:4px;color:var(--muted);cursor:pointer;font-size:.75rem;transition:all .2s}
+.copy-btn:hover{background:var(--accent);color:#fff}
+.copy-btn.copied{background:var(--accent2);color:#fff}
+.attrs{font-size:.82rem;color:var(--muted)}
+.attrs strong{color:var(--text);font-weight:600}
+.browser-support{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.browser-support span{padding:2px 8px;background:var(--bg);border-radius:4px;font-size:.72rem;font-family:var(--mono)}
+.features{padding:48px 0;border-top:1px solid var(--border)}
+.features h2{text-align:center;font-size:1.5rem;margin-bottom:32px}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.feat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center}
+.feat .icon{font-size:2rem;margin-bottom:12px}
+.feat h3{font-size:1.05rem;margin-bottom:8px}
+.feat p{color:var(--muted);font-size:.88rem}
+.faq{padding:48px 0;border-top:1px solid var(--border)}
+.faq h2{text-align:center;font-size:1.5rem;margin-bottom:32px}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;overflow:hidden}
+.faq-q{padding:16px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;user-select:none}
+.faq-q .arrow{transition:transform .2s;font-size:.8rem;color:var(--muted)}
+.faq-item.open .arrow{transform:rotate(180deg)}
+.faq-a{padding:0 20px 16px;color:var(--muted);font-size:.92rem;display:none}
+.faq-item.open .faq-a{display:block}
+.email-widget{padding:48px 0;border-top:1px solid var(--border)}
+.email-widget h2{text-align:center;font-size:1.5rem;margin-bottom:8px}
+.email-widget>p{text-align:center;color:var(--muted);margin-bottom:24px}
+.email-form{max-width:440px;margin:0 auto;display:flex;gap:10px}
+.email-form input{flex:1;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-size:.95rem;outline:none}
+.email-form input:focus{border-color:var(--accent)}
+.email-form button{padding:10px 20px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-weight:600;transition:opacity .2s}
+.email-form button:hover{opacity:.85}
+.cross-links{padding:32px 0;border-top:1px solid var(--border)}
+.cross-links h2{font-size:1.1rem;margin-bottom:16px}
+.links-grid{display:flex;gap:12px;flex-wrap:wrap}
+.links-grid a{padding:8px 16px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);font-size:.88rem;transition:border-color .2s}
+.links-grid a:hover{border-color:var(--accent);text-decoration:none}
+footer{border-top:1px solid var(--border);padding:24px 0;text-align:center;color:var(--muted);font-size:.82rem}
+footer a{color:var(--accent)}
+.no-results{text-align:center;padding:48px;color:var(--muted);font-size:1.1rem;display:none}
+@media(max-width:640px){
+  header h1{font-size:1.4rem}
+  .grid{grid-template-columns:1fr}
+  .info-grid{grid-template-columns:1fr}
+  .email-form{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>HTML Input Types — Complete Reference</h1>
+  <p>Every HTML <code>&lt;input&gt;</code> type with live examples, attributes, browser support &amp; mobile keyboard info</p>
+  <div class="stats">
+    <span><strong>22</strong> Input Types</span>
+    <span><strong>6</strong> Categories</span>
+    <span><strong>100%</strong> Interactive</span>
+  </div>
+</header>
+
+<nav>
+  <div class="container">
+    <div class="search-wrap">
+      <input type="text" id="search" placeholder="Search input types, attributes, descriptions..." autocomplete="off">
+    </div>
+    <div class="tabs" id="tabs">
+      <button class="active" data-cat="all">All</button>
+      <button data-cat="text">Text</button>
+      <button data-cat="numeric">Numeric</button>
+      <button data-cat="datetime">Date/Time</button>
+      <button data-cat="selection">Selection</button>
+      <button data-cat="action">Action</button>
+      <button data-cat="other">Other</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="grid" id="grid"></div>
+  <div class="no-results" id="noResults">No input types match your search.</div>
+</main>
+
+<section class="features" id="features">
+  <h2>Key Features</h2>
+  <div class="feat-grid">
+    <div class="feat"><div class="icon">⚡</div><h3>Live Examples</h3><p>Every input type renders live — interact with them directly in the browser to see real behavior.</p></div>
+    <div class="feat"><div class="icon">📱</div><h3>Mobile Keyboard Info</h3><p>See exactly which virtual keyboard each type triggers on iOS and Android devices.</p></div>
+    <div class="feat"><div class="icon">✅</div><h3>Validation Rules</h3><p>Built-in browser validation for each type — pattern matching, range checks, and required fields.</p></div>
+    <div class="feat"><div class="icon">📋</div><h3>Copy Snippets</h3><p>One click to copy production-ready HTML for any input type. Paste directly into your project.</p></div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><div class="faq-q">What is the difference between <code>text</code> and <code>search</code> input types?<span class="arrow">▼</span></div><div class="faq-a">The <code>search</code> type is semantically for search fields. Browsers may style it differently (rounded corners, clear X button). It also triggers a search-optimized keyboard on some mobile devices. Functionally, both accept free-form text, but <code>search</code> signals intent to browsers and assistive technology.</div></div>
+  <div class="faq-item"><div class="faq-q">Which input types have built-in browser validation?<span class="arrow">▼</span></div><div class="faq-a"><code>email</code>, <code>url</code>, <code>number</code>, <code>tel</code> (with pattern), <code>date</code>/<code>time</code> variants, and <code>file</code> (with accept) all have built-in validation. Required fields, min/max, minlength/maxlength, and pattern attributes add further constraints. Browsers show native error tooltips when validation fails on form submit.</div></div>
+  <div class="faq-item"><div class="faq-q">How do I style input types consistently across browsers?<span class="arrow">▼</span></div><div class="faq-a">Use <code>appearance: none</code> or <code>appearance: textfield</code> to strip native styling, then apply your own. For range, color, file, and date inputs, you'll need vendor-specific pseudo-elements (<code>::-webkit-slider-thumb</code>, <code>::-webkit-color-swatch</code>, etc.). Normalize.css or modern-CSS-reset can help as a base layer.</div></div>
+</section>
+
+<section class="email-widget">
+  <h2>Stay Updated</h2>
+  <p>Get notified when we add new input types, browser updates, or HTML5 tips.</p>
+  <form class="email-form" onsubmit="event.preventDefault();const b=this.querySelector('button');b.textContent='Subscribed ✓';b.disabled=true;setTimeout(()=>{b.textContent='Subscribe';b.disabled=false},3000)">
+    <input type="email" placeholder="you@example.com" required>
+    <button type="submit">Subscribe</button>
+  </form>
+</section>
+
+<section class="cross-links">
+  <h2>Related Resources</h2>
+  <div class="links-grid">
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" target="_blank" rel="noopener">MDN: &lt;input&gt; Reference</a>
+    <a href="https://html.spec.whatwg.org/multipage/input.html" target="_blank" rel="noopener">HTML Living Standard</a>
+    <a href="https://caniuse.com/#feat=input-file-accept" target="_blank" rel="noopener">Can I Use: Input Types</a>
+    <a href="https://www.w3.org/TR/html52/sec-forms.html" target="_blank" rel="noopener">W3C Forms Spec</a>
+    <a href="https://web.dev/learn/forms/" target="_blank" rel="noopener">web.dev: Learn Forms</a>
+  </div>
+</section>
+
+<footer>
+  <p>HTML Input Types Reference — Built with ❤ for developers. <a href="#features">Features</a> · <a href="#faq">FAQ</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" target="_blank" rel="noopener">MDN Docs</a></p>
+</footer>
+</div>
+
+<script>
+const types=[
+{name:"text",cat:"text",catLabel:"Text",badge:"badge-text",desc:"Single-line plain text input. The default type when no type attribute is specified.",attrs:"name, value, placeholder, maxlength, minlength, pattern, required, readonly, disabled, size, autocomplete, list",mobile:"Standard alphanumeric keyboard",validation:"pattern, minlength/maxlength, required",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="text" placeholder="Enter your name…">'},
+
+{name:"password",cat:"text",catLabel:"Text",badge:"badge-text",desc:"Obscured text input. Characters are masked for sensitive data entry like passwords.",attrs:"name, value, placeholder, maxlength, minlength, pattern, required, readonly, disabled, autocomplete",mobile:"Standard keyboard with masked characters",validation:"pattern, minlength/maxlength, required",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="password" placeholder="Enter password…">'},
+
+{name:"email",cat:"text",catLabel:"Text",badge:"badge-text",desc:"Email address input with built-in validation. Triggers email-optimized keyboard on mobile.",attrs:"name, value, placeholder, multiple, pattern, required, readonly, disabled, maxlength, minlength, list, autocomplete",mobile:"Email keyboard (@ and .com keys prominent)",validation:"Must match email format (user@domain). Multiple emails with multiple attribute",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="email" placeholder="user@example.com" required>'},
+
+{name:"number",cat:"numeric",catLabel:"Numeric",badge:"badge-numeric",desc:"Numeric input with spinner controls. Only accepts numeric values.",attrs:"name, value, placeholder, min, max, step, required, readonly, disabled, list, autocomplete",mobile:"Numeric keypad (digits + decimal)",validation:"Must be a number. min/max range, step increment. NaN rejected",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="number" placeholder="42" min="0" max="100" step="1">'},
+
+{name:"tel",cat:"text",catLabel:"Text",badge:"badge-text",desc:"Telephone number input. No enforced format unless pattern is used.",attrs:"name, value, placeholder, pattern, required, readonly, disabled, maxlength, size, list, autocomplete",mobile:"Phone/dialer keypad (digits + * #)",validation:"No built-in format validation. Use pattern for enforcement",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="tel" placeholder="+1 (555) 123-4567" pattern="[0-9+\\-() ]{7,15}">'},
+
+{name:"url",cat:"text",catLabel:"Text",badge:"badge-text",desc:"URL input with built-in format validation. Expects a valid URI.",attrs:"name, value, placeholder, pattern, required, readonly, disabled, maxlength, minlength, list, autocomplete, spellcheck",mobile:"URL keyboard (/ .com keys prominent)",validation:"Must be a valid URL (protocol required in most browsers)",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="url" placeholder="https://example.com" required>'},
+
+{name:"search",cat:"text",catLabel:"Text",badge:"badge-text",desc:"Search field with optional clear button. Semantically marks the field as a search input.",attrs:"name, value, placeholder, maxlength, minlength, pattern, required, readonly, disabled, list, autocomplete, spellcheck",mobile:"Standard keyboard, some browsers show search-optimized layout",validation:"pattern, minlength/maxlength, required",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="search" placeholder="Search…">'},
+
+{name:"date",cat:"datetime",catLabel:"Date/Time",badge:"badge-datetime",desc:"Date picker (year, month, day). Renders a calendar dropdown in supporting browsers.",attrs:"name, value, min, max, step, required, readonly, disabled, list",mobile:"Date roller/wheel picker",validation:"Must be valid date. min/max range enforced",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="date" min="2024-01-01" max="2026-12-31">'},
+
+{name:"datetime-local",cat:"datetime",catLabel:"Date/Time",badge:"badge-datetime",desc:"Date and time picker without timezone. Combines date + time in one control.",attrs:"name, value, min, max, step, required, readonly, disabled",mobile:"Combined date + time roller picker",validation:"Must be valid datetime. min/max range enforced",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="datetime-local" min="2024-01-01T00:00" max="2026-12-31T23:59">'},
+
+{name:"month",cat:"datetime",catLabel:"Date/Time",badge:"badge-datetime",desc:"Month and year picker. No day selection.",attrs:"name, value, min, max, required, readonly, disabled, list",mobile:"Month/year roller picker",validation:"Must be valid month (YYYY-MM). min/max range enforced",support:["Chrome ✓","Firefox ✓","Safari ✗","Edge ✓"],html:'<input type="month" min="2024-01" max="2026-12">'},
+
+{name:"week",cat:"datetime",catLabel:"Date/Time",badge:"badge-datetime",desc:"Week number picker (ISO week). Selects a specific week of a year.",attrs:"name, value, min, max, step, required, readonly, disabled",mobile:"Standard date roller or unsupported",validation:"Must be valid week (YYYY-Www). min/max range",support:["Chrome ✓","Firefox ✗","Safari ✗","Edge ✓"],html:'<input type="week" min="2024-W01" max="2026-W52">'},
+
+{name:"time",cat:"datetime",catLabel:"Date/Time",badge:"badge-datetime",desc:"Time picker (hours, minutes, optionally seconds). No date component.",attrs:"name, value, min, max, step, required, readonly, disabled, list",mobile:"Time wheel/hourglass picker",validation:"Must be valid time (HH:MM or HH:MM:SS). min/max range",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="time" min="00:00" max="23:59" step="60">'},
+
+{name:"range",cat:"numeric",catLabel:"Numeric",badge:"badge-numeric",desc:"Slider control for approximate numeric values within a range.",attrs:"name, value, min, max, step, disabled, list",mobile:"Custom slider (touch draggable)",validation:"No validation — always returns a value within range. Default: 0–100, step 1",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<div style="display:flex;align-items:center;gap:12px"><input type="range" min="0" max="100" value="50" style="flex:1" oninput="this.nextElementSibling.textContent=this.value"><span style="font-family:var(--mono);font-size:.85rem;min-width:32px">50</span></div>'},
+
+{name:"color",cat:"selection",catLabel:"Selection",badge:"badge-selection",desc:"Color picker. Opens the OS native color chooser dialog.",attrs:"name, value, disabled, list",mobile:"Native color picker dialog or simplified palette",validation:"Must be valid 7-char hex (#rrggbb). Default: #000000",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="color" value="#58a6ff">'},
+
+{name:"file",cat:"selection",catLabel:"Selection",badge:"badge-selection",desc:"File upload control. Opens the OS file picker dialog.",attrs:"name, accept, multiple, capture, required, disabled",mobile:"File picker (gallery/files) or camera with capture attribute",validation:"accept restricts MIME types. required enforces selection",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="file" accept=".png,.jpg,.pdf">'},
+
+{name:"checkbox",cat:"selection",catLabel:"Selection",badge:"badge-selection",desc:"Boolean or multi-select toggle. Checked or unchecked state.",attrs:"name, value, checked, required, disabled, indeterminate",mobile:"Custom checkbox (tap to toggle)",validation:"With required, at least one must be checked (in a group)",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" name="agree" value="yes"> I agree to the terms</label>'},
+
+{name:"radio",cat:"selection",catLabel:"Selection",badge:"badge-selection",desc:"Single-select within a group. Only one radio with the same name can be checked.",attrs:"name, value, checked, required, disabled",mobile:"Custom radio button (tap to select)",validation:"With required, one in the group must be selected",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<fieldset style="border:none;padding:0"><label style="display:flex;align-items:center;gap:8px;margin-bottom:6px;cursor:pointer"><input type="radio" name="plan" value="free" checked> Free</label><label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="radio" name="plan" value="pro"> Pro</label></fieldset>'},
+
+{name:"hidden",cat:"other",catLabel:"Other",badge:"badge-other",desc:"Invisible input for data that should not be shown but is submitted with the form.",attrs:"name, value, disabled",mobile:"No keyboard (not visible)",validation:"None — hidden fields are never validated",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="hidden" name="csrf_token" value="abc123"><span class="hidden-val">↳ Hidden value: abc123</span>'},
+
+{name:"submit",cat:"action",catLabel:"Action",badge:"badge-action",desc:"Submit button that sends the form data. Triggers form validation before submission.",attrs:"name, value, disabled, form, formaction, formmethod, formenctype, formnovalidate, formtarget",mobile:"Submit button (no keyboard)",validation:"Triggers form validation. formnovalidate bypasses it",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="submit" value="Submit Form" style="padding:10px 20px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-weight:600">'},
+
+{name:"reset",cat:"action",catLabel:"Action",badge:"badge-action",desc:"Reset button that clears all form fields back to their initial values.",attrs:"name, value, disabled, form",mobile:"Reset button (no keyboard)",validation:"None — resets the form without validation",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="reset" value="Reset Form" style="padding:10px 20px;background:var(--border);color:var(--text);border:none;border-radius:var(--radius);cursor:pointer">'},
+
+{name:"button",cat:"action",catLabel:"Action",badge:"badge-action",desc:"Generic push button with no default behavior. Requires JavaScript to add functionality.",attrs:"name, value, disabled",mobile:"Button (no keyboard)",validation:"None — no form interaction by default",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="button" value="Click Me" style="padding:10px 20px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:var(--radius);cursor:pointer" onclick="this.value=\'Clicked!\'">'},
+
+{name:"image",cat:"action",catLabel:"Action",badge:"badge-action",desc:"Graphical submit button. The image acts as the submit control and sends click coordinates.",attrs:"name, src, alt, width, height, form, formaction, formmethod, formenctype, formnovalidate, formtarget, disabled",mobile:"Image submit (tap sends coordinates)",validation:"Triggers form validation like submit",support:["Chrome ✓","Firefox ✓","Safari ✓","Edge ✓"],html:'<input type="image" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iNDAiPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iNDAiIHJ4PSI2IiBmaWxsPSIjMWY2ZmViIi8+PHRleHQgeD0iNTAiIHk9IjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyI+U3VibWl0PC90ZXh0Pjwvc3ZnPg==" alt="Submit" style="border-radius:6px;cursor:pointer">'}
+];
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function snippet(name,html){
+  const raw=`&lt;input type="${name}"&gt;`;
+  return raw;
+}
+
+function renderCards(filter='all',query=''){
+  const grid=document.getElementById('grid');
+  const noRes=document.getElementById('noResults');
+  grid.innerHTML='';
+  const q=query.toLowerCase().trim();
+  let count=0;
+  types.forEach((t,i)=>{
+    const catMatch=filter==='all'||t.cat===filter;
+    const qMatch=!q||t.name.includes(q)||t.desc.toLowerCase().includes(q)||t.attrs.toLowerCase().includes(q)||t.catLabel.toLowerCase().includes(q);
+    if(!catMatch||!qMatch)return;
+    count++;
+    const card=document.createElement('div');
+    card.className='card';
+    card.dataset.cat=t.cat;
+    card.innerHTML=`
+      <div class="card-head"><h3>&lt;input type="${t.name}"&gt;</h3><span class="badge ${t.badge}">${t.catLabel}</span></div>
+      <p class="desc">${t.desc}</p>
+      <div class="example-wrap"><label>Live Example</label>${t.html}</div>
+      <div class="info-grid">
+        <div class="info-item"><div class="label">Mobile Keyboard</div><div class="val">${t.mobile}</div></div>
+        <div class="info-item"><div class="label">Validation</div><div class="val">${t.validation}</div></div>
+      </div>
+      <div class="code-wrap"><code>&lt;input type="${t.name}"&gt;</code><button class="copy-btn" onclick="copyCode(this,'${t.name}')">Copy</button></div>
+      <div class="attrs"><strong>Attributes:</strong> ${t.attrs}</div>
+      <div class="browser-support">${t.support.map(s=>`<span>${s}</span>`).join('')}</div>`;
+    grid.appendChild(card);
+  });
+  noRes.style.display=count?'none':'block';
+}
+
+function copyCode(btn,name){
+  const code=`<input type="${name}">`;
+  navigator.clipboard.writeText(code).then(()=>{
+    btn.textContent='Copied!';
+    btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied')},2000);
+  });
+}
+
+document.querySelectorAll('.tabs button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    renderCards(b.dataset.cat,document.getElementById('search').value);
+  });
+});
+
+document.getElementById('search').addEventListener('input',e=>{
+  const active=document.querySelector('.tabs button.active').dataset.cat;
+  renderCards(active,e.target.value);
+});
+
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>q.parentElement.classList.toggle('open'));
+});
+
+renderCards();
+</script>
+</body>
+</html>
